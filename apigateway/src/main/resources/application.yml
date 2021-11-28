@@ -1,0 +1,16 @@
+server:
+  port: 8070
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: employeeModule
+          uri: http://localhost:8042/
+          predicates:
+            - Path=/handShake/**
+        - id: consumerModule
+          uri: http://localhost:8082/
+          predicates:
+            - Path=/consumer/**
+  application:
+    name: APIGateway
